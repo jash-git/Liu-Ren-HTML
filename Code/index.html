@@ -48,8 +48,8 @@
 	<B>第一步:</B></br></br><input type="text" placeholder="請在此輸入本此想要詢問卜卦之事內容，並誠心默念三次" style="width: 500px; text-align: center;"> <br/><br/>
     <B>第二步:</B><div style="white-space: pre-wrap;">
 	請在下面三個輸入框填入和此次卜卦之事相關的三個整數，
-	或者點選『取數』按鈕 由系統隨機幫你任取三個數
-	最後點選『算命』按鈕 查看算命結果
+	或者點選『隨機取數』按鈕 由系統隨機幫你任取三個數
+	最後點選『開始算命』按鈕 查看算命結果
 	</div>
 	<br/><br/>
 	<label>第一數：</label> <input type="text" id="v1" name="v1" value="0" style="width: 50px; text-align: center;">
@@ -57,11 +57,19 @@
 	<label>第三數：</label> <input type="text" id="v3" name="v3" value="0" style="width: 50px; text-align: center;"><br/>
     <br/>
 	<button onclick="GenerateNumbers()">隨機取數</button>
-	<button onclick="Result()">算命</button>
+	<button onclick="Result()">開始算命</button>
     <button onclick="clearResults()">清除結果</button>
 	<br/><br/><br/>
     <div id="results" class="results" style="white-space: pre-wrap; align-items: center; justify-content: flex-start;">結果：無</div>
 	<div id="dice" class="dice" style="display: none;">🎲</div>
+	<div style="color: #F0E68C;">
+	    個人操作順序:
+		01.打上事項
+		02.念20聲 阿彌陀佛
+		03.依照元件念 阿彌陀佛+觀世音菩薩
+		04.按下取號
+		05.按下算命
+	</div>
     <script>
         function GenerateNumbers() {
             // 產生 9 個隨機數 (1-6)
@@ -165,5 +173,8 @@
 			console.clear();
         }
     </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5772570629604800"
+     crossorigin="anonymous"></script>  
+    
 </body>
 </html>
