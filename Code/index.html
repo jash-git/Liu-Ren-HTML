@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小六壬網頁程式(Liu Ren HTML)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+		div{font-size: 20px;}
+		label{font-size: 20px;}
+		input{font-size: 20px;}
+		input::placeholder { color: red;}
+        .dice {
+            font-size: 100px;
+            margin: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .results {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+        .center-img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 20%;
+        }	
+    </style>
+</head>
+<body>
+	<h1>『隨機取數』小六壬算命程式</h1>
+    <div style="text-align: center;">
+        <img src="./Liu-Ren.png" class="center-img" alt="Liu-Ren">
+    </div>
+	<br/>
+	<input type="text" placeholder="請在此輸入本此想要詢問卜卦之事內容，並誠心默念三次" style="width: 500px; text-align: center;"> <br/><br/>
+    <div style="white-space: pre-wrap;">
+	請在下面三個輸入框填入和此次卜卦之事相關的三個整數，
+	或者點選『取數』按鈕 由系統隨機幫你任取三個數
+	最後點選『卜掛』按鈕 查看算命結果
+	</div>
+	<label></label>
+	<label>第一數：</label> <input type="text" id="v1" name="v1" value="0" style="width: 50px; text-align: center;">
+	<label>第二數：</label> <input type="text" id="v2" name="v2" value="0" style="width: 50px; text-align: center;">
+	<label>第三數：</label> <input type="text" id="v3" name="v3" value="0" style="width: 50px; text-align: center;"><br/>
+    <button onclick="GenerateNumbers()">取數</button>
+	<button onclick="result()">卜掛</button>
+    <button onclick="clearResults()">清除結果</button>
+    <div id="results" class="results">結果：無</div>
+	<div id="dice" class="dice" style="display: none;">🎲</div>
+    <script>
+        function GenerateNumbers() {
+            // 產生 9 個隨機數 (1-6)
+            let numbers = Array.from({ length: 9 }, () => Math.floor(Math.random() * 6) + 1);
+
+            // 分成三組
+            let group1 = numbers.slice(0, 3);
+            let group2 = numbers.slice(3, 6);
+            let group3 = numbers.slice(6, 9);
+
+            // 計算總和
+            let sum1 = group1.reduce((a, b) => a + b, 0);
+            let sum2 = group2.reduce((a, b) => a + b, 0);
+            let sum3 = group3.reduce((a, b) => a + b, 0);
+
+            // 顯示結果在 input 中
+            document.getElementById("v1").value = sum1;
+            document.getElementById("v2").value = sum2;
+            document.getElementById("v3").value = sum3;
+
+            // 顯示完整的隨機數陣列 (可選)
+            console.log("隨機數:", numbers);
+            console.log("組 1:", group1, "總和:", sum1);
+            console.log("組 2:", group2, "總和:", sum2);
+            console.log("組 3:", group3, "總和:", sum3);
+        }
+		
+		function result() {
+		
+		}		
+        // 儲存擲骰子結果的陣列
+        const diceResults = [];
+        function rollDice() {
+            const diceFaces = ['🎲', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+            const randomIndex = Math.floor(Math.random() * 6) + 1;
+
+            // 更新骰子圖案
+            document.getElementById('dice').innerText = diceFaces[randomIndex];
+
+            // 記錄結果
+            diceResults.push(randomIndex);
+
+            // 更新結果顯示
+            document.getElementById('results').innerText = `結果：${diceResults.join(', ')}`;
+        }
+
+        function clearResults() {
+            // 清空結果陣列
+            diceResults.length = 0;
+
+            // 重置結果顯示
+            document.getElementById('results').innerText = `結果：無`;
+
+            // 重置骰子圖案
+            document.getElementById('dice').innerText = '🎲';
+			
+			// 重置三數字
+            document.getElementById("v1").value = 0;
+            document.getElementById("v2").value = 0;
+            document.getElementById("v3").value = 0;
+			console.clear();
+        }
+    </script>
+</body>
+</html>
