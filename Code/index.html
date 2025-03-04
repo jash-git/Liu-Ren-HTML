@@ -9,13 +9,13 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 20px;
-			font-size: 20px;
-			background-color: #F0E68C; /* 鵝黃色 */
+            font-size: 20px;
+            background-color: #F0E68C; /* 鵝黃色 */
         }
-		div{font-size: 20px;}
-		label{font-size: 20px;}
-		input{font-size: 20px;}
-		input::placeholder { color: red;}
+        div{font-size: 20px;}
+        label{font-size: 20px;}
+        input{font-size: 20px;}
+        input::placeholder { color: red;}
         .dice {
             font-size: 100px;
             margin: 20px;
@@ -36,40 +36,40 @@
             margin-left: auto;
             margin-right: auto;
             width: 20%;
-        }	
+        }    
     </style>
 </head>
 <body>
-	<h2>『隨機取數』小六壬算命程式</h2>
+    <h2>『隨機取數』小六壬算命程式</h2>
     <div style="text-align: center;">
         <img src="./Liu-Ren.png" class="center-img" alt="Liu-Ren">
     </div>
-	<br/>
-	<B>第一步:</B></br></br><input type="text" placeholder="請在此輸入本此想要詢問卜卦之事內容，並誠心默念三次" style="width: 500px; text-align: center;"> <br/><br/>
-    <B>第二步:</B><div style="white-space: pre-wrap;">
-	請在下面三個輸入框填入和此次卜卦之事相關的三個整數，
-	或者點選『隨機取數』按鈕 由系統隨機幫你任取三個數
-	最後點選『開始算命』按鈕 查看算命結果
-	</div>
-	<br/><br/>
-	<label>第一數：</label> <input type="text" id="v1" name="v1" value="0" style="width: 50px; text-align: center;">
-	<label>第二數：</label> <input type="text" id="v2" name="v2" value="0" style="width: 50px; text-align: center;">
-	<label>第三數：</label> <input type="text" id="v3" name="v3" value="0" style="width: 50px; text-align: center;"><br/>
     <br/>
-	<button onclick="GenerateNumbers()">隨機取數</button>
-	<button onclick="Result()">開始算命</button>
+    <B>第一步:</B></br></br><input type="text" id="memo" name="memo" placeholder="請在此輸入本此想要詢問卜卦之事內容，並誠心默念三次" style="width: 500px; text-align: center;"> <br/><br/>
+    <B>第二步:</B><div style="white-space: pre-wrap;">
+    請在下面三個輸入框填入和此次卜卦之事相關的三個整數，
+    或者點選『隨機取數』按鈕 由系統隨機幫你任取三個數
+    最後點選『開始算命』按鈕 查看算命結果
+    </div>
+    <br/><br/>
+    <label>第一數：</label> <input type="text" id="v1" name="v1" value="0" style="width: 50px; text-align: center;">
+    <label>第二數：</label> <input type="text" id="v2" name="v2" value="0" style="width: 50px; text-align: center;">
+    <label>第三數：</label> <input type="text" id="v3" name="v3" value="0" style="width: 50px; text-align: center;"><br/>
+    <br/>
+    <button onclick="GenerateNumbers()">隨機取數</button>
+    <button onclick="Result()">開始算命</button>
     <button onclick="clearResults()">清除結果</button>
-	<br/><br/><br/>
+    <br/><br/><br/>
     <div id="results" class="results" style="white-space: pre-wrap; align-items: center; justify-content: flex-start;">結果：無</div>
-	<div id="dice" class="dice" style="display: none;">🎲</div>
-	<div style="color: #F0E68C;">
-	    個人操作順序:
-		01.打上事項
-		02.念20聲 阿彌陀佛
-		03.依照元件念 阿彌陀佛+觀世音菩薩
-		04.按下取號
-		05.按下算命
-	</div>
+    <div id="dice" class="dice" style="display: none;">🎲</div>
+    <div style="color: #F0E68C;">
+        個人操作順序:
+        01.打上事項
+        02.念20聲 阿彌陀佛
+        03.依照元件念 阿彌陀佛+觀世音菩薩
+        04.按下取號
+        05.按下算命
+    </div>
     <script>
         function GenerateNumbers() {
             // 產生 9 個隨機數 (1-6)
@@ -96,50 +96,50 @@
             console.log("組 2:", group2, "總和:", sum2);
             console.log("組 3:", group3, "總和:", sum3);
         }
-		
-		function Result() {
-		  let LiuRenName = ["空亡", "大安", "留連", "速喜", "赤口", "小吉"];
-		  let LiuRenValue01 = ["「空亡」: 這是最不吉利的卦象，代表所涉及的事務可能會遇到極大的困難和阻礙。 [先得再失 問現實(數量)/錢財最慘 但若是哲學/玄學/心理/修道最佳]", 
-							   "「大安」: 象徵極大的吉祥，預示著美好的運勢。 [求安穩,大安最吉 求變化,大安不吉]", 
-							   "「留連」: 寓意運氣平平，凡事可能會拖延，需要更多時間和耐心。 [想挽留,留連是吉 否則都很惡心]", 
-							   "「速喜」: 預示喜事即將來臨，在各方面都是頗為吉利的卦象。 [意想不到的好事 求穩定則不好是驚嚇]", 
-							   "「赤口」: 意味著容易引起爭執和官司，事情可能不太順利。 [吵架、打架、斗爭、訴訟是非 肉體受傷]", 
-							   "「小吉」: 預示即將迎來好結果，所預測的事務值得等待和堅持。 [成功有缺漏 適合起步]"];
-		  
-		  //取出對應數字取6餘數並取卦文
-		  let v1 = Number(document.getElementById("v1").value);
-		  let v2 = Number(document.getElementById("v2").value);
-		  let v3 = Number(document.getElementById("v3").value);
-		  if(((v1+v2)<1)||((v1+v2+v3)<2))
-		  {
-			alert("這三個數無法算命");
-			return;
-		  }
-		  let s1 = v1%6;
-		  let s2 = (v1+v2-1)%6;
-		  let s3 = (v1+v2+v3-2)%6;
+        
+        function Result() {
+          let LiuRenName = ["空亡", "大安", "留連", "速喜", "赤口", "小吉"];
+          let LiuRenValue01 = ["「空亡」: 這是最不吉利的卦象，代表所涉及的事務可能會遇到極大的困難和阻礙。 [先得再失 問現實(數量)/錢財最慘 但若是哲學/玄學/心理/修道最佳]", 
+                               "「大安」: 象徵極大的吉祥，預示著美好的運勢。 [求安穩,大安最吉 求變化,大安不吉]", 
+                               "「留連」: 寓意運氣平平，凡事可能會拖延，需要更多時間和耐心。 [想挽留,留連是吉 否則都很惡心]", 
+                               "「速喜」: 預示喜事即將來臨，在各方面都是頗為吉利的卦象。 [意想不到的好事 求穩定則不好是驚嚇]", 
+                               "「赤口」: 意味著容易引起爭執和官司，事情可能不太順利。 [吵架、打架、斗爭、訴訟是非 肉體受傷]", 
+                               "「小吉」: 預示即將迎來好結果，所預測的事務值得等待和堅持。 [成功有缺漏 適合起步]"];
+          
+          //取出對應數字取6餘數並取卦文
+          let v1 = Number(document.getElementById("v1").value);
+          let v2 = Number(document.getElementById("v2").value);
+          let v3 = Number(document.getElementById("v3").value);
+          if(((v1+v2)<1)||((v1+v2+v3)<2))
+          {
+            alert("這三個數無法算命");
+            return;
+          }
+          let s1 = v1%6;
+          let s2 = (v1+v2-1)%6;
+          let s3 = (v1+v2+v3-2)%6;
           console.log("s1:", s1, "Nane:",LiuRenValue01[s1] );
           console.log("s2:", s2, "Nane:",LiuRenValue01[s2] );
           console.log("s3:", s3, "Nane:",LiuRenValue01[s3] );
-		  
-		  //顯示卦文
-		  let color01 = ((s1%2)!=0) ? "red" : "black";
-		  let color02 = ((s2%2)!=0) ? "red" : "black";
-		  let color03 = ((s3%2)!=0) ? "red" : "black";
+          
+          //顯示卦文
+          let color01 = ((s1%2)!=0) ? "red" : "black";
+          let color02 = ((s2%2)!=0) ? "red" : "black";
+          let color03 = ((s3%2)!=0) ? "red" : "black";
           document.getElementById("results").innerHTML = `
-				<B>
-				事情的算命預測：<br>
+                <B>
+                事情的算命預測：<br>
                 開始 : <span style="color: ${color01};">${LiuRenValue01[s1]}</span><br>
                 過程 : <span style="color: ${color02};">${LiuRenValue01[s2]}</span><br>
                 結果 : <span style="color: ${color03};">${LiuRenValue01[s3]}</span>
-				</B>`;	
-			//JS 把 畫面拉到最下面	
-			window.scrollTo({
-				top: document.body.scrollHeight, 
-				behavior: "smooth" // 平滑滾動
-			});		  
-		}		
-		
+                </B>`;    
+            //JS 把 畫面拉到最下面    
+            window.scrollTo({
+                top: document.body.scrollHeight, 
+                behavior: "smooth" // 平滑滾動
+            });          
+        }        
+        
         // 儲存擲骰子結果的陣列
         const diceResults = [];
         function rollDice() {
@@ -165,12 +165,15 @@
 
             // 重置骰子圖案
             document.getElementById('dice').innerText = '🎲';
-			
-			// 重置三數字
+            
+            // 重置三數字
             document.getElementById("v1").value = 0;
             document.getElementById("v2").value = 0;
             document.getElementById("v3").value = 0;
-			console.clear();
+            
+            // 清空詢問事件敘述
+            document.getElementById("memo").value ='';
+            console.clear();
         }
     </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5772570629604800"
